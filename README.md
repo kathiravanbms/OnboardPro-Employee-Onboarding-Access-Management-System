@@ -128,9 +128,10 @@ The UI includes an audit retention toggle. The current project keeps this settin
 ## Requirements
 
 - Java 17
-- Maven or included Maven wrappers
+- Maven 3.8+
 - Node.js 18+
-- MySQL 8
+- npm 9+
+- MySQL 8.0+
 
 ## Environment Variables
 
