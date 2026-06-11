@@ -1,0 +1,2 @@
+ALTER TABLE documents
+  MODIFY COLUMN storage_url LONGTEXT NOT NULL;

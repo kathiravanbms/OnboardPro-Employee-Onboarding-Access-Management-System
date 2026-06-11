@@ -1,0 +1,43 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Java / Maven
+target/
+*.class
+*.jar
+*.war
+*.ear
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Runtime logs and local generated files
+*.log
+*.err.log
+logs/
+tmp/
+.publish/
+
+# Local test helpers and generated artifacts
+coverage/
+*.tmp
+*.bak
+
+# Keep source docs, ignore generated dashboard PDFs if recreated locally
+onboardingEmployee/Admin_Dashboard_*.pdf

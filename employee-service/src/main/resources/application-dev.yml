@@ -1,0 +1,20 @@
+server:
+  port: 8082
+
+spring:
+  datasource:
+    url: ${EMPLOYEE_SERVICE_DB_URL:jdbc:mysql://localhost:3306/onboardpro_employee_dev?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true}
+    username: ${EMPLOYEE_SERVICE_DB_USERNAME:root}
+    password: ${EMPLOYEE_SERVICE_DB_PASSWORD:your-mysql-password}
+  jpa:
+    show-sql: true
+
+logging:
+  level:
+    com.onboardpro.employee: DEBUG
+    org.springframework.security: INFO
+
+management:
+  endpoint:
+    health:
+      show-details: always

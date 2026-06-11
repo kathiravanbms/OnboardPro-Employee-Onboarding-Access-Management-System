@@ -1,0 +1,2 @@
+ALTER TABLE audit_logs
+  MODIFY COLUMN user_id VARCHAR(36) NULL;

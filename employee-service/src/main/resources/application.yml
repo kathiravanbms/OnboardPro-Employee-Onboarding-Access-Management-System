@@ -1,0 +1,51 @@
+server:
+  port: 8082
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: employee-service
+  datasource:
+    url: ${EMPLOYEE_SERVICE_DB_URL:jdbc:mysql://localhost:3306/onboardpro_employee?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true}
+    username: ${EMPLOYEE_SERVICE_DB_USERNAME:root}
+    password: ${EMPLOYEE_SERVICE_DB_PASSWORD:your-mysql-password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+jwt:
+  secret: ${ONBOARDPRO_JWT_SECRET:change-this-production-secret-key-at-least-32-bytes-long}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: when_authorized
+  info:
+    env:
+      enabled: true
+
+info:
+  app:
+    name: employee-service
+    description: OnboardPro employee onboarding microservice
+    version: 0.0.1-SNAPSHOT

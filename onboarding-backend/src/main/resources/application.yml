@@ -1,0 +1,52 @@
+server:
+  port: 8081
+
+spring:
+  config:
+    import: optional:file:.env[.properties]
+  application:
+    name: auth-identity-service
+  datasource:
+    url: ${AUTH_SERVICE_DB_URL:jdbc:mysql://localhost:3306/onboardpro_auth?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true}
+    username: ${AUTH_SERVICE_DB_USERNAME:root}
+    password: ${AUTH_SERVICE_DB_PASSWORD:your-mysql-password}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    username: ${ONBOARDPRO_MAIL_USERNAME:yourgmail@gmail.com}
+    password: ${ONBOARDPRO_MAIL_PASSWORD:your-gmail-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 10000
+          timeout: 10000
+          writetimeout: 10000
+          starttls:
+            enable: true
+            required: true
+
+app:
+  login:
+    url: ${ONBOARDPRO_LOGIN_URL:http://localhost:5173/login}
+  reset:
+    password:
+      url: ${ONBOARDPRO_RESET_PASSWORD_URL:http://127.0.0.1:5173/reset-password}
+
+jwt:
+  secret: ${ONBOARDPRO_JWT_SECRET:change-this-production-secret-key-at-least-32-bytes-long}
+  accessExpiry: ${ONBOARDPRO_JWT_ACCESS_EXPIRY:60m}
+  refreshExpiry: ${ONBOARDPRO_JWT_REFRESH_EXPIRY:7d}
